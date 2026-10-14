@@ -1,0 +1,34 @@
+[
+  {
+    "file": "doom.wav",
+    "duration_seconds": 109.0909,
+    "sample_rate": 32000,
+    "channels": 2,
+    "peak": 0.87994,
+    "rms": 0.10639
+  },
+  {
+    "file": "industrial.wav",
+    "duration_seconds": 96.0,
+    "sample_rate": 32000,
+    "channels": 2,
+    "peak": 0.87994,
+    "rms": 0.14377
+  },
+  {
+    "file": "surf-original.wav",
+    "duration_seconds": 97.3913,
+    "sample_rate": 32000,
+    "channels": 2,
+    "peak": 0.87994,
+    "rms": 0.1609
+  },
+  {
+    "file": "surf.wav",
+    "duration_seconds": 97.3913,
+    "sample_rate": 32000,
+    "channels": 2,
+    "peak": 0.88995,
+    "rms": 0.16387
+  }
+]

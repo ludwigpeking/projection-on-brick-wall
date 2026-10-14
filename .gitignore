@@ -1,0 +1,11 @@
+archive/
+exports/
+_site/
+*.log
+__pycache__/
+.env
+.env.*
+audio/*.wav
+!audio/surf-loop.wav
+!audio/doom.wav
+!audio/industrial.wav

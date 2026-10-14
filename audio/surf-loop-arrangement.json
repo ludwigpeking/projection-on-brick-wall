@@ -1,0 +1,238 @@
+{
+  "tempo": 138,
+  "duration": 97.39130434782608,
+  "arrangement": [
+    {
+      "bar": 1,
+      "chord": "Am9"
+    },
+    {
+      "bar": 2,
+      "chord": "Am9"
+    },
+    {
+      "bar": 3,
+      "chord": "Fmaj7"
+    },
+    {
+      "bar": 4,
+      "chord": "Dm9"
+    },
+    {
+      "bar": 5,
+      "chord": "Am9"
+    },
+    {
+      "bar": 6,
+      "chord": "Cmaj7"
+    },
+    {
+      "bar": 7,
+      "chord": "Dm6"
+    },
+    {
+      "bar": 8,
+      "chord": "E7b9"
+    },
+    {
+      "bar": 9,
+      "chord": "Am9"
+    },
+    {
+      "bar": 10,
+      "chord": "Am9"
+    },
+    {
+      "bar": 11,
+      "chord": "Fmaj7"
+    },
+    {
+      "bar": 12,
+      "chord": "Dm9"
+    },
+    {
+      "bar": 13,
+      "chord": "Am9"
+    },
+    {
+      "bar": 14,
+      "chord": "Cmaj7"
+    },
+    {
+      "bar": 15,
+      "chord": "Dm6"
+    },
+    {
+      "bar": 16,
+      "chord": "E7b9"
+    },
+    {
+      "bar": 17,
+      "chord": "Am9"
+    },
+    {
+      "bar": 18,
+      "chord": "Am9"
+    },
+    {
+      "bar": 19,
+      "chord": "Fmaj7"
+    },
+    {
+      "bar": 20,
+      "chord": "Dm9"
+    },
+    {
+      "bar": 21,
+      "chord": "Am9"
+    },
+    {
+      "bar": 22,
+      "chord": "Cmaj7"
+    },
+    {
+      "bar": 23,
+      "chord": "Dm6"
+    },
+    {
+      "bar": 24,
+      "chord": "E7b9"
+    },
+    {
+      "bar": 25,
+      "chord": "Fmaj7"
+    },
+    {
+      "bar": 26,
+      "chord": "Cmaj7"
+    },
+    {
+      "bar": 27,
+      "chord": "Dm9"
+    },
+    {
+      "bar": 28,
+      "chord": "E7"
+    },
+    {
+      "bar": 29,
+      "chord": "Am9"
+    },
+    {
+      "bar": 30,
+      "chord": "Bbmaj7"
+    },
+    {
+      "bar": 31,
+      "chord": "Dm6"
+    },
+    {
+      "bar": 32,
+      "chord": "E7b9"
+    },
+    {
+      "bar": 33,
+      "chord": "Fmaj7"
+    },
+    {
+      "bar": 34,
+      "chord": "Cmaj7"
+    },
+    {
+      "bar": 35,
+      "chord": "Dm9"
+    },
+    {
+      "bar": 36,
+      "chord": "E7"
+    },
+    {
+      "bar": 37,
+      "chord": "Am9"
+    },
+    {
+      "bar": 38,
+      "chord": "Bbmaj7"
+    },
+    {
+      "bar": 39,
+      "chord": "Dm6"
+    },
+    {
+      "bar": 40,
+      "chord": "E7b9"
+    },
+    {
+      "bar": 41,
+      "chord": "Am9"
+    },
+    {
+      "bar": 42,
+      "chord": "Am9"
+    },
+    {
+      "bar": 43,
+      "chord": "Fmaj7"
+    },
+    {
+      "bar": 44,
+      "chord": "Dm9"
+    },
+    {
+      "bar": 45,
+      "chord": "Am9"
+    },
+    {
+      "bar": 46,
+      "chord": "Cmaj7"
+    },
+    {
+      "bar": 47,
+      "chord": "Dm6"
+    },
+    {
+      "bar": 48,
+      "chord": "E7b9"
+    },
+    {
+      "bar": 49,
+      "chord": "Am9"
+    },
+    {
+      "bar": 50,
+      "chord": "Am9"
+    },
+    {
+      "bar": 51,
+      "chord": "Fmaj7"
+    },
+    {
+      "bar": 52,
+      "chord": "Dm9"
+    },
+    {
+      "bar": 53,
+      "chord": "Am9"
+    },
+    {
+      "bar": 54,
+      "chord": "Cmaj7"
+    },
+    {
+      "bar": 55,
+      "chord": "Dm6"
+    },
+    {
+      "bar": 56,
+      "chord": "E7b9"
+    }
+  ],
+  "instruments": [
+    "guitars",
+    "lead",
+    "organ",
+    "bass",
+    "drums"
+  ],
+  "source": "Original local synthesis; no sampled recordings"
+}

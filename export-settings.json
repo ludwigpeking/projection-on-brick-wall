@@ -1,0 +1,28 @@
+{
+  "settings": {
+    "viewer-angle": 30,
+    "projector-angle": 0,
+    "relief-depth": 0.55,
+    "beat-response": 0.38,
+    "flock-count": 8,
+    "ghost-scale": 1.55,
+    "ghost-softness": 0.8,
+    "ghost-speed": 3.5,
+    "flock-beat-response": 0.8,
+    "ambient": 0.2,
+    "wall-width": 8,
+    "wall-height": 12,
+    "columns": 36,
+    "rows": 160,
+    "bond-offset": 0,
+    "viewer-distance": 18,
+    "viewer-height": 1.7,
+    "projector-distance": 18,
+    "projector-height": 2,
+    "throw-ratio": 0.7
+  },
+  "photoCorners": [[150,149],[484,106],[491,639],[150,639]],
+  "music": "surf-loop.wav",
+  "resolution": "4K UHD",
+  "frameRate": 30
+}

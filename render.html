@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Brick relief · motion study</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div><span class="eyebrow">DOWNTOWN BROOKLYN / PROJECTION STUDY</span><h1>The wall starts to move.</h1></div><span class="status"><i></i> LIVE STUDY · 4K LOOP EXPORTS</span></header>
+<main>
+<section class="visual-column">
+<div class="stage" id="stage"><canvas id="preview" aria-label="Animated brick relief preview"></canvas><div class="stage-top"><span id="scene-label">01 / Faces in the masonry</span><span id="view-label">Audience · 45°</span></div><div class="stage-bottom"><span id="stage-note">Virtual relief · approximate brick registration</span><span id="beat-light">●</span></div><div id="error-message" hidden></div></div>
+<div class="transport"><button id="play" class="primary">▶ Play with music</button><button id="restart" title="Return to beginning">↺</button><output id="time-label">00:01 / 01:37</output><input id="timeline" aria-label="Timeline" type="range" min="0" max="97.3913" step="0.01" value="1.83"><button id="mute" aria-label="Mute music">Sound on</button></div>
+<div class="chapters"><button data-scene="faces"><span>01</span> Beat faces</button><button data-scene="flock"><span>02</span> Flying flock</button><button data-scene="dance"><span>03</span> Dancing array</button></div>
+<div class="view-toolbar"><div class="segmented"><button data-mode="audience" class="selected">Relief study</button><button data-mode="photo">On your wall</button><button data-mode="projector">Projector feed</button></div><button id="save-view">Keep view ↓</button><button id="save-frame">Save test frame ↓</button><button id="fullscreen">Full screen</button></div>
+<div id="projector-output-controls" hidden><label>Framing <select id="projector-framing"><option value="fit">Fill frame</option><option value="lens">Physical lens preview</option></select></label><label>Projector resolution <select id="projector-resolution"><option value="3840">3840 × 2160 · 4K UHD</option><option value="1920">1920 × 1080 · Full HD</option><option value="2048">2048 × 1080 · DCI 2K</option></select></label><p id="projector-pixel-readout" class="fine"></p></div>
+<p class="caption" id="mode-caption">A virtual masonry surface seen from the selected audience position. The moving forms are made of bricks; the original ghost silhouettes guide the flock.</p>
+<details class="setup-panel"><summary>Placement &amp; wall registration <span>Provisional setup</span></summary><div class="setup-content"><div><canvas id="placement" width="500" height="370" aria-label="Top view of wall, audience and projector"></canvas><p id="placement-readout"></p><p class="fine">Angles are measured from the wall normal: 0° is straight-on. Positive angles place audience and projector on the same side. This is a top view of the adjustable geometry, not a surveyed site plan.</p><img class="site-reference" src="assets/site-reference.png" alt="Your site reference with audience area and wall marked"></div><div class="setup-controls">
+<label>Wall width <output id="wall-width-value"></output><input id="wall-width" type="range" min="2" max="14" step="0.1" value="8"></label>
+<label>Wall height <output id="wall-height-value"></output><input id="wall-height" type="range" min="3" max="18" step="0.1" value="12"></label>
+<label>Brick columns <output id="columns-value"></output><input id="columns" type="range" min="16" max="80" step="1" value="36"></label>
+<label>Brick courses <output id="rows-value"></output><input id="rows" type="range" min="48" max="210" step="1" value="160"></label>
+<label>Horizontal bond offset <output id="bond-offset-value"></output><input id="bond-offset" type="range" min="-0.5" max="0.5" step="0.01" value="0"></label>
+<label>Audience distance to wall center, in plan <output id="viewer-distance-value"></output><input id="viewer-distance" type="range" min="8" max="35" step="0.5" value="18"></label>
+<label>Audience eye height <output id="viewer-height-value"></output><input id="viewer-height" type="range" min="1" max="4" step="0.1" value="1.7"></label>
+<label>Projector distance to wall center, in plan <output id="projector-distance-value"></output><input id="projector-distance" type="range" min="5" max="35" step="0.5" value="18"></label>
+<label>Projector height <output id="projector-height-value"></output><input id="projector-height" type="range" min="0.5" max="8" step="0.1" value="2"></label>
+<label>Lens throw ratio <output id="throw-ratio-value"></output><input id="throw-ratio" type="range" min="0.3" max="2.5" step="0.01" value="0.7"></label>
+<label>Projector orientation <select id="projector-orientation"><option value="portrait">Portrait · 9:16</option><option value="landscape">Landscape · 16:9</option></select></label>
+<label class="check"><input id="show-grid" type="checkbox"> Show registration grid</label>
+<label class="check"><input id="edit-corners" type="checkbox"> Adjust photo corners (drag in “On your wall”)</label>
+<button id="reset-corners">Reset photo corners</button><p class="fine">36 columns × 160 courses approximates 222 × 75 mm spacing over 8 × 12 m. The reference is too small to register every actual brick. These grid controls are a first alignment study; final mapping needs a sharper wall image and an on-site calibration.</p>
+</div></div></details>
+</section>
+<aside><section><span class="eyebrow">01 / CHOOSE THE SOUND</span><h2>Three ways to haunt it.</h2><p class="muted">Original synthesized rock sketches. Click an option, then play. Each has a complete 1½–2 minute structure.</p><div class="music-options">
+<button class="music selected" data-music="surf"><span class="music-number">A</span><span><strong>Gothic surf rock</strong><small>138 BPM · 1:37 · richer layered arrangement</small></span><span class="music-indicator">●</span></button>
+<button class="music" data-music="doom"><span class="music-number">B</span><span><strong>Slow doom rock</strong><small>88 BPM · 1:49 · heavy / spacious</small></span><span class="music-indicator">●</span></button>
+<button class="music" data-music="industrial"><span class="music-number">C</span><span><strong>Industrial horror rock</strong><small>120 BPM · 1:36 · tense / mechanical</small></span><span class="music-indicator">●</span></button>
+</div><a id="download-music" href="audio/surf-loop.wav" download>Download selected music sketch ↗</a><label class="volume">Music volume<input id="volume" aria-label="Music volume" type="range" min="0" max="1" step="0.01" value="0.55"></label></section>
+<section class="controls"><span class="eyebrow">02 / SHAPE THE ILLUSION</span><label>Audience angle <output id="viewer-angle-value"></output><input id="viewer-angle" type="range" min="15" max="75" step="1" value="30"></label><div class="angle-presets"><button data-angle="15">15°</button><button data-angle="45">45°</button><button data-angle="75">75°</button></div>
+<label>Projector angle <output id="projector-angle-value"></output><input id="projector-angle" type="range" min="-60" max="60" step="1" value="0"></label>
+<label>Relief depth <output id="relief-depth-value"></output><input id="relief-depth" type="range" min="0.05" max="1.2" step="0.01" value="0.55"></label>
+<label>Face beat strength <output id="beat-response-value"></output><input id="beat-response" type="range" min="0" max="1" step="0.01" value="0.38"></label>
+<label>Flock size <output id="flock-count-value"></output><input id="flock-count" type="range" min="3" max="12" step="1" value="8"></label>
+<label>Ghost size <output id="ghost-scale-value"></output><input id="ghost-scale" type="range" min="1" max="2.4" step="0.05" value="1.55"></label>
+<label>Flock softness <output id="ghost-softness-value"></output><input id="ghost-softness" type="range" min="0" max="1" step="0.05" value="0.8"></label>
+<label>Flock speed <output id="ghost-speed-value"></output><input id="ghost-speed" type="range" min="1" max="6" step="0.25" value="3.5"></label>
+<label>Flock beat strength <output id="flock-beat-response-value"></output><input id="flock-beat-response" type="range" min="0" max="1.5" step="0.05" value="0.8"></label>
+<label>Ambient wall visibility <output id="ambient-value"></output><input id="ambient" type="range" min="0.06" max="0.7" step="0.01" value="0.2"></label>
+</section><section class="notes"><span class="eyebrow">WHAT TO LOOK FOR</span><p>Do the faces feel trapped <em>inside</em> the masonry? Do they fully disappear? Does the flock still read as brick at 45°?</p><p class="fine">The depth is an optical illusion, strongest at the saved audience position. The photo composite is illustrative. Projector feed uses a planar viewer-to-projector transform, but requires real lens, pose, and wall measurements before use.</p><p class="fine"><a href="exports/loop-player.html">Open the portrait and landscape 4K looping videos.</a></p></section></aside>
+</main><footer>Richard Qian Li, ITP, NYU <span>Ghost sketches → brick relief / test 02</span></footer><audio id="music-player" preload="auto" src="audio/surf-loop.wav"></audio><script src="motion.js"></script><script src="projection.js"></script><script src="app.js"></script>
+<script src="export-video.js"></script></body></html>

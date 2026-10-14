@@ -1,0 +1,35 @@
+[
+  {
+    "key": "surf",
+    "name": "Gothic surf rock",
+    "tempo": 138,
+    "bars": 56,
+    "root": 45,
+    "description": "Tremolo-picked minor runs, spring-like echoes, restless drums.",
+    "duration": 97.39130434782608,
+    "file": "audio/surf.wav",
+    "peak": 0.8799999952316284
+  },
+  {
+    "key": "doom",
+    "name": "Slow doom rock",
+    "tempo": 88,
+    "bars": 40,
+    "root": 33,
+    "description": "Low power chords, half-time weight, long haunted spaces.",
+    "duration": 109.09090909090908,
+    "file": "audio/doom.wav",
+    "peak": 0.8799999952316284
+  },
+  {
+    "key": "industrial",
+    "name": "Industrial horror rock",
+    "tempo": 120,
+    "bars": 48,
+    "root": 38,
+    "description": "Muted distorted pulses, metallic accents, insistent backbeat.",
+    "duration": 96.0,
+    "file": "audio/industrial.wav",
+    "peak": 0.8799999952316284
+  }
+]
