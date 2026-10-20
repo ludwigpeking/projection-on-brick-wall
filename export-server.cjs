@@ -35,7 +35,10 @@ function startJob(configuration) {
     const output=path.join(outputDirectory,"brick-ghosts-4k-"+orientation+".mp4");
     const totalFrames=2922;
     const durationSeconds=totalFrames/30;
-    const args=["-hide_banner","-y","-f","image2pipe","-framerate","30","-vcodec","mjpeg","-i","pipe:0","-i",path.join(root,"audio","surf-4k-loop.wav"),"-map","0:v:0","-map","1:a:0","-c:v","h264_nvenc","-preset","p5","-tune","hq","-rc","vbr","-cq","18","-b:v","0","-pix_fmt","yuv420p","-profile:v","high","-level:v","5.1","-g","60","-bf","2","-c:a","aac","-b:a","320k","-ar","48000","-af","volume=0.55","-t",String(durationSeconds),"-movflags","+faststart",output];
+    const videoEncoderArguments=process.platform==="darwin"
+        ? ["-c:v","h264_videotoolbox","-q:v","75","-bf","0"]
+        : ["-c:v","h264_nvenc","-preset","p5","-tune","hq","-rc","vbr","-cq","18","-b:v","0","-bf","2"];
+    const args=["-hide_banner","-y","-f","image2pipe","-framerate","30","-vcodec","mjpeg","-i","pipe:0","-i",path.join(root,"audio","surf-4k-loop.wav"),"-map","0:v:0","-map","1:a:0",...videoEncoderArguments,"-pix_fmt","yuv420p","-profile:v","high","-level:v","5.1","-g","60","-c:a","aac","-b:a","320k","-ar","48000","-af","volume=0.55","-t",String(durationSeconds),"-movflags","+faststart",output];
     const log=fileSystem.createWriteStream(path.join(supportDirectory,orientation+"-encode.log"));
     const encoder=childProcess.spawn("ffmpeg",args,{windowsHide:true,stdio:["pipe","ignore","pipe"]});
     activeJob={state:"rendering",orientation:orientation,receivedFrames:0,totalFrames:totalFrames,output:output,encoder:encoder,error:null};

@@ -10,9 +10,8 @@ project_directory = Path(__file__).resolve().parent.parent
 output_directory = project_directory / "exports"
 support_directory = output_directory / "support"
 configuration = json.loads((support_directory / "portrait-settings.json").read_text())
-wall_view = json.loads((support_directory / "wall-preview-settings.json").read_text())
-assert configuration["settings"] == wall_view["settings"], "Source animation settings differ from selected preview"
-assert wall_view["music"] == "surf"
+# Use the registration saved with this exact render, never an older kept view.
+assert "photoCorners" in configuration, "Source render is missing wall registration"
 settings = configuration["settings"]
 output_width, output_height = 1162, 1334
 source_width, source_height = 2160, 3840
@@ -35,7 +34,7 @@ vertical_scale = min(1.96 / (screen_maximum[1] - screen_minimum[1]), 1.96 * aspe
 screen_scale = np.array([vertical_scale / aspect_ratio, vertical_scale])
 normalized_corners = (screen_corners - (screen_minimum + screen_maximum) / 2) * screen_scale
 source_corners = np.column_stack(((normalized_corners[:, 0] + 1) * output_width / 2, (1 - normalized_corners[:, 1]) * output_height / 2))
-destination_corners = np.array(wall_view["photoCorners"], dtype=float) * 2
+destination_corners = np.array(configuration["photoCorners"], dtype=float) * 2
 
 equation_rows, equation_results = [], []
 for (source_horizontal, source_vertical), (destination_horizontal, destination_vertical) in zip(source_corners, destination_corners):
@@ -62,7 +61,8 @@ command.extend(["-i", str(output_directory / "brick-ghosts-4k-portrait.mp4"), "-
 if proof_mode:
     command.extend(["-frames:v", "1", "-an", "-update", "1", str(support_directory / "wall-preview-proof.png")])
 else:
-    command.extend(["-map", "1:a:0", "-c:v", "h264_nvenc", "-preset", "p5", "-tune", "hq", "-rc", "vbr", "-cq", "18", "-b:v", "0", "-pix_fmt", "yuv420p", "-c:a", "copy", "-t", "97.4", "-movflags", "+faststart", str(output_directory / "brick-ghosts-on-wall-preview.mp4")])
+    video_encoder_arguments = ["-c:v", "h264_videotoolbox", "-q:v", "75", "-bf", "0"] if sys.platform == "darwin" else ["-c:v", "h264_nvenc", "-preset", "p5", "-tune", "hq", "-rc", "vbr", "-cq", "18", "-b:v", "0"]
+    command.extend(["-map", "1:a:0", *video_encoder_arguments, "-pix_fmt", "yuv420p", "-c:a", "copy", "-t", "97.4", "-movflags", "+faststart", str(output_directory / "brick-ghosts-on-wall-preview.mp4")])
 with (support_directory / ("wall-preview-proof.log" if proof_mode else "wall-preview-encode.log")).open("w") as log_file:
     subprocess.run(command, stdout=log_file, stderr=log_file, check=True)
 print("Wall preview proof ready" if proof_mode else "Wall preview video ready", flush=True)

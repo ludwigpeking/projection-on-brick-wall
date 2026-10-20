@@ -16,7 +16,15 @@ async function exportRequest(endpoint,body) {
     return result;
 }
 function encodedFrame() {
-    return new Promise(function(resolve,reject){previewCanvas.toBlob(function(blob){if(blob)resolve(blob);else reject(new Error("Frame encoding failed"));},"image/jpeg",0.98);});
+    // toBlob schedules idle work that Chromium can starve in background tabs.
+    // Synchronous JPEG capture preserves every frame without that idle queue.
+    const encodedImageUrl=previewCanvas.toDataURL("image/jpeg",0.98);
+    const encodedImageBytes=atob(encodedImageUrl.slice(encodedImageUrl.indexOf(",")+1));
+    const imageByteArray=new Uint8Array(encodedImageBytes.length);
+    for(let byteIndex=0;byteIndex<encodedImageBytes.length;byteIndex++) {
+        imageByteArray[byteIndex]=encodedImageBytes.charCodeAt(byteIndex);
+    }
+    return new Blob([imageByteArray],{type:"image/jpeg"});
 }
 function yieldExportWork() {
     return new Promise(function(resolve){

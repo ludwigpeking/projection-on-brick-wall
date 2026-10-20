@@ -10,14 +10,15 @@ from PIL import Image
 output_directory = Path(__file__).resolve().parent.parent / "exports"
 orientations = sys.argv[1:] or ["portrait", "landscape"]
 for orientation in orientations:
-    video_path = output_directory / f"brick-ghosts-4k-{orientation}.mp4"
+    assert orientation in ["portrait", "landscape", "preview"]
+    video_path = output_directory / ("brick-ghosts-on-wall-preview.mp4" if orientation == "preview" else f"brick-ghosts-4k-{orientation}.mp4")
     metadata = json.loads(subprocess.check_output([
         "ffprobe", "-v", "error", "-show_streams", "-show_format",
         "-of", "json", str(video_path)
     ]))
     video_stream = next(stream for stream in metadata["streams"] if stream["codec_type"] == "video")
     audio_stream = next(stream for stream in metadata["streams"] if stream["codec_type"] == "audio")
-    expected_dimensions = (2160, 3840) if orientation == "portrait" else (3840, 2160)
+    expected_dimensions = {"portrait": (2160, 3840), "landscape": (3840, 2160), "preview": (1162, 1334)}[orientation]
     assert (video_stream["width"], video_stream["height"]) == expected_dimensions
     assert video_stream["avg_frame_rate"] == "30/1"
     assert int(video_stream["nb_frames"]) == 2922
@@ -26,10 +27,24 @@ for orientation in orientations:
     assert int(audio_stream["channels"]) == 2
     assert int(audio_stream["sample_rate"]) == 48000
     boundary_checks = {}
+    preview_boundary_images = []
     for frame_index in [0, 2921]:
-        source_frame = np.asarray(Image.open(output_directory / "support" / f"{orientation}-frame-{frame_index:04d}.jpg"))
+        if orientation == "preview":
+            decoded_pixels = subprocess.check_output([
+                "ffmpeg", "-v", "error", "-ss", str(frame_index / 30), "-i", str(video_path),
+                "-frames:v", "1", "-vf", "scale=581:667", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"
+            ])
+            source_frame = np.frombuffer(decoded_pixels, dtype=np.uint8).reshape(667, 581, 3)
+            preview_boundary_images.append(source_frame)
+        else:
+            source_frame = np.asarray(Image.open(output_directory / "support" / f"{orientation}-frame-{frame_index:04d}.jpg"))
         boundary_checks[str(frame_index)] = {"maximum": int(source_frame.max()), "mean": float(source_frame.mean())}
-        assert source_frame.max() == 0, "Loop boundary must emit black"
+        if orientation != "preview":
+            assert source_frame.max() == 0, "Loop boundary must emit black"
+    if orientation == "preview":
+        seam_difference = np.abs(preview_boundary_images[0].astype(float) - preview_boundary_images[1].astype(float))
+        boundary_checks["mean_difference"] = float(seam_difference.mean())
+        assert seam_difference.mean() < 1, "Preview loop must return to the same unlit wall"
     decode_result = subprocess.run([
         "ffmpeg", "-v", "error", "-xerror", "-i", str(video_path),
         "-map", "0:v:0", "-map", "0:a:0", "-f", "null", "-"
