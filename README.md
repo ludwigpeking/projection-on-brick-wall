@@ -34,6 +34,10 @@ I want people to doubt a surface they pass every day, and then walk a little clo
 2. **A flock** swims across the wall.
 3. **Rows of ghosts** dance.
 
+**Sketches.** These are my eight ghost drawings. Each one becomes a height map that pushes bricks out of the wall.
+
+![Eight ghost sketches](docs/proposal/ghost-sketches.png)
+
 | Flock | Dance |
 | --- | --- |
 | ![Flock](docs/proposal/projector-feed-flock.jpg) | ![Dance](docs/proposal/projector-feed-dance.jpg) |
