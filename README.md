@@ -1,4 +1,116 @@
-# Brick relief motion study
+# The Wall Starts to Move
+
+**Qian Li** · Site-specific projection proposal · 2026
+
+🔗 [Live projection study](https://ludwigpeking.github.io/projection-on-brick-wall/)
+
+![Ghosts rising out of the brick wall at dusk (simulation)](docs/proposal/on-wall-preview.png)
+
+---
+
+## Part 1 · Artist Statement
+
+I make installations that use light, code, and sensors to bring the city's solid surfaces to life. I keep coming back to walls, bodies, and screens: what stays fixed, what gets to move, and who is watching.
+
+Cities feel permanent, but they are really very slow performances. My work speeds one up for a moment.
+
+I work with real-time graphics, projection mapping, computer vision, simulation, and generated sound. I build a digital twin of each site and test the piece there before it reaches the real one.
+
+I want people to doubt a surface they pass every day, and then walk a little closer.
+
+---
+
+## Part 2 · Project Proposal
+
+### Overview
+
+| | |
+| --- | --- |
+| **Title** | The Wall Starts to Move |
+| **Type** | Site-specific projection mapping, audience-responsive |
+| **Site** | Blank brick wall off Pearl St / Jay St, Downtown Brooklyn |
+| **Surface** | about 8 m wide × 12 m high, running-bond brick |
+| **Duration** | 97-second looping piece; dusk to 11 pm, 3 nights or more |
+| **Audience** | Passersby on the sidewalk; free; no app needed |
+
+### Concept
+
+One blank wall comes alive at night. Bricks seem to push out of the wall and form ghosts: faces pop out on the beat, a flock drifts across, and then rows of ghosts dance. The wall stays physically flat. The depth is an illusion of light, drawn for where the viewer stands.
+
+### The Site
+
+![The wall today](assets/wall-reference.png)
+
+![Site plan: viewing area (blue) and the wall (red)](assets/site-reference.png)
+
+- It is a windowless brick wall, visible from the Pearl St sidewalk.
+- Audience view: 15°–75° off-axis from the sidewalk.
+- Projector: mounted across the street, aimed at the wall.
+
+### The Experience
+
+1. **Faces.** Faces pop out of the bricks in time with the music.
+2. **Flock.** Ghosts swim across the whole wall as a flock (boids).
+3. **Dance.** 18–23 ghosts dance in rows, rising and sinking with the beat.
+
+These three scenes play in a shuffled loop with an original rock soundtrack (gothic surf, 138 BPM).
+
+![Projector feed: flock](docs/proposal/projector-feed-flock.jpg)
+
+![Projector feed: dancing rows](docs/proposal/projector-feed-dance.jpg)
+
+### What's New (Improvement on Existing Work)
+
+The existing study is a fixed video loop. **This proposal makes the ghosts react to the audience.**
+
+- An overhead depth camera tracks people on the sidewalk.
+- The flock steers toward or away from passersby.
+- Perspective adjusts to where the crowd stands, so the 3D illusion holds for more people.
+
+The original ghost sketch (ITP Physical Computing midterm) already used Kinect input, and the projection study already runs in real time in a browser. This step connects the two.
+
+### How It Works
+
+- **Rendering:** WebGL in the browser; every brick is modelled with real displacement.
+- **Illusion:** Each virtual 3D point is re-projected onto the flat wall for the viewer's eye position.
+- **Mapping:** A four-corner homography registers the image to the wall photo, then on-site alignment fine-tunes it.
+- **Sound:** Three original synthesized soundtracks; visuals lock to the audio clock.
+- **Output:** 4K portrait and landscape feeds, plus a black background, so only the ghosts receive light.
+
+![Interactive study: choose music, viewing angle, projector setup](docs/proposal/web-app.png)
+
+### Feasibility
+
+- **Done:** Full digital study, 4K exports, wall registration, live web app.
+- **Needed:** An on-site test with a 20,000+ lumen laser projector at dusk; a better wall photo survey.
+- **Risk:** Ambient street light reduces contrast. Plan: start after dusk and use a high-brightness projector.
+
+### Equipment
+
+- 1 × 20,000–30,000 lm laser projector (e.g. Epson PL30000 class), portrait-capable
+- 1 × computer running the browser renderer
+- 1 × depth camera (Kinect / Orbbec) + mount
+- 2 × outdoor speakers
+- Weatherproof enclosure, power, permits
+
+### Timeline
+
+| Weeks | Task |
+| --- | --- |
+| 1–2 | Site survey, wall photo, permits |
+| 3–4 | Camera tracking + interactive flock |
+| 5 | On-site projector and registration test |
+| 6 | Tuning and sound |
+| 7 | Public nights |
+
+### Links
+
+- Live study: <https://ludwigpeking.github.io/projection-on-brick-wall/>
+- Technical notes: [below](#brick-relief-motion-study-technical-notes)
+
+---
+
+# Brick relief motion study: technical notes
 
 Interactive projection study and 4K export workflow for an approximately **8 m wide × 12 m high** brick wall in downtown Brooklyn.
 
