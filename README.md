@@ -6,9 +6,8 @@
 
 ## Artist Statement
 
-I make installations that use light, code, and sensors to bring the city's solid surfaces to life. I keep coming back to walls, bodies, and screens: what stays fixed, what gets to move, and who is watching.
-
-Cities feel permanent, but they are really very slow performances. My work speeds one up for a moment.
+Building facade used to be central to the image of a household or an establishment, in another word an essential media in pre-internet societies.
+These days web media becomes the new facades. 
 
 I work with real-time graphics, projection mapping, computer vision, simulation, and generated sound. I build a digital twin of each site and test the piece there before it reaches the real one.
 
